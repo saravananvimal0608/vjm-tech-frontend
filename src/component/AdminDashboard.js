@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allData } from '../slices/detailsSlice'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+
 const AdminDashboard = () => {
     const navigate = useNavigate();
 
@@ -20,17 +21,9 @@ const AdminDashboard = () => {
         dispatch(allData())
     }, [dispatch])
 
-    /* SHOW ERROR TOAST */
-    useEffect(() => {
-        if (error) {
-            toast.error(error.message || 'Failed to load data')
-        }
-    }, [error])
-
     /* FILTER HANDLER */
     const handleFilter = (userId) => {
         setSelectedUserId(userId)
-        toast.info(userId ? 'Filter applied' : 'Showing all data')
     }
 
     // If user selected → show only that user's data
@@ -49,7 +42,7 @@ const AdminDashboard = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
         navigate('/')
-        toast.success("Logout Success")
+        toast.success("Logout Successfully")
     }
     return (
         <div className="admin-container">
