@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchDetails, addDetails, deleteDetails } from '../slices/detailsSlice'
-import { Button, Drawer, Form, Input } from 'antd'
+import { Button, Drawer, Form, Input, DatePicker } from 'antd'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 const DashBoard = () => {
+  const dateFormat = 'YYYY/MM/DD';
   const [form] = Form.useForm();
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -53,6 +54,12 @@ const DashBoard = () => {
     <div className="admin-container">
       <button onClick={handleLogout} className='logout-btn'>Logout</button>
 
+      <div className="add-btn">
+        <Button className="add-link-btn" onClick={() => setOpen(true)}>
+          Add Task
+        </Button>
+      </div>
+
       <div className="admin-header mt-5 mt-md-0">
         <h1> {(name && name.charAt(0).toUpperCase() + name.slice(1)) || "User"} Dashboard</h1>
       </div>
@@ -67,11 +74,6 @@ const DashBoard = () => {
         </div>
       </div>
 
-      <div className="user-filter">
-        <Button className="add-link-btn" onClick={() => setOpen(true)}>
-          Add Task
-        </Button>
-      </div>
 
       <Drawer
         title="Add Link"
@@ -94,7 +96,7 @@ const DashBoard = () => {
             name="date"
             rules={[{ required: true, message: 'Enter A Date!' }]}
           >
-            <Input placeholder="YYYY-MM-DD" />
+            <DatePicker format={dateFormat} />
           </Form.Item>
 
           <Button type="primary" htmlType="submit">

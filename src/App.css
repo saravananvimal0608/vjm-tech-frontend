@@ -404,12 +404,24 @@
 
 .logout-btn {
   position: absolute;
-  right: 31px;
   padding: 10px 20px;
   border-radius: 8px;
-  background-color: #6878E2;
-  color: white;
   border: none;
+  color: white !important;
+  background-color: #F86461 !important
+}
+
+.add-btn {
+  position: absolute;
+  border-radius: 50px;
+  border: none;
+  right: 40px;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
 .logout-btn:hover {
