@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { getApi, postApi, deleteApi } from '../common/common'
+import { getApi, postApi, deleteApi, putApi } from '../common/common'
 
 export const fetchDetails = createAsyncThunk(
     "details/fetchDetails",
@@ -29,13 +29,16 @@ export const deleteDetails = createAsyncThunk(
     'delete/deleteDetails',
     async (id, thunkAPI) => {
         try {
-            const res = await deleteApi(`/details/delete/${id}`)
-            return res.data.details
+            await deleteApi(`/details/delete/${id}`)
+            return id
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.response?.data || "api fetching error")
+            return thunkAPI.rejectWithValue(
+                error.response?.data || "api fetching error"
+            )
         }
     }
 )
+
 
 export const allData = createAsyncThunk(
     "alldata/getAllData",
@@ -48,6 +51,26 @@ export const allData = createAsyncThunk(
         }
     }
 )
+
+export const updateDetails = createAsyncThunk(
+    "details/updateDetails",
+    async ({ id, values }, thunkAPI) => {
+        try {
+            const payload = {
+                completed: values.receivedIn === "completed",
+                launchPending: values.receivedIn === "launchPending"
+            }
+
+            const res = await putApi(`/details/update/${id}`, payload)
+            return res.data.details
+        } catch (error) {
+            return thunkAPI.rejectWithValue(
+                error.response?.data || "Update failed"
+            )
+        }
+    }
+)
+
 
 const detailsSlice = createSlice({
     name: "details",
@@ -94,6 +117,41 @@ const detailsSlice = createSlice({
                 state.datas = action.payload
             })
             .addCase(allData.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.payload
+            })
+
+            // delete details
+            .addCase(deleteDetails.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(deleteDetails.fulfilled, (state, action) => {
+                state.loading = false
+
+                state.datas = state.datas.filter(
+                    (item) => item._id !== action.payload
+                )
+            })
+
+            .addCase(deleteDetails.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.payload
+            })
+
+            .addCase(updateDetails.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(updateDetails.fulfilled, (state, action) => {
+                state.loading = false
+                const index = state.datas.findIndex(
+                    (item) => item._id === action.payload._id
+                )
+                if (index !== -1) {
+                    state.datas[index] = action.payload
+                }
+            })
+
+            .addCase(updateDetails.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.payload
             })

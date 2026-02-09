@@ -18,11 +18,13 @@
   animation: slideUp 0.6s ease-out;
 }
 
+
 @keyframes slideUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -156,7 +158,8 @@
   padding: 30px;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 20px;
   margin-bottom: 20px;
@@ -214,31 +217,31 @@
   .admin-login-container {
     padding: 15px;
   }
-  
+
   .login-card {
     padding: 30px 20px;
   }
-  
+
   .login-header h2 {
     font-size: 24px;
   }
-  
+
   .dashboard-header {
     padding: 15px 20px;
     flex-direction: column;
     gap: 15px;
     text-align: center;
   }
-  
+
   .dashboard-content {
     padding: 20px 15px;
   }
-  
+
   .dashboard-stats {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .stat-card {
     padding: 20px;
   }
@@ -248,17 +251,17 @@
   .login-card {
     padding: 25px 15px;
   }
-  
+
   .form-group input {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
+    /* Prevents zoom on iOS */
   }
-  
+
   .dashboard-header h1 {
     font-size: 20px;
   }
-  
+
   .stat-card p {
     font-size: 24px;
   }
 }
-

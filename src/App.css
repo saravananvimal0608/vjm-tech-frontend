@@ -1,10 +1,74 @@
 /* Premium Login Page Styles */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  --primary-gradient-90: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.sidebar {
+  background-color: #f0f4f8;
+  width: 250px;
+  z-index: 1000;
+}
+
+.total-task-wrapper {
+  background: linear-gradient(#DA4453, #89216B);
+  height: 150px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  color: white;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.pending-task {
+  background: linear-gradient(#659999, #f4791f) !important;
+}
+
+.completed-task {
+  background: linear-gradient(#1f4037, #99f2c8) !important;
+}
+
+.launch-task {
+  background: linear-gradient(#aa4b6b, #6b6b83, #3b8d99) !important;
+}
+
+.icons {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 80px;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.active {
+  background-color: #6E63C4 !important;
+  color: white !important;
+}
+
 .login-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   padding: 20px;
 }
 
@@ -29,7 +93,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,7 +132,7 @@
   width: 100%;
   height: 50px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   border: none;
   font-size: 16px;
   font-weight: 600;
@@ -79,19 +143,29 @@
 .login-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  background: var(--primary-gradient-hover);
 }
+
+.bg-color {
+  background-color: #F3F1FF;
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
 
 .ant-form-item-explain-error {
   color: #ff4d4f;
   font-size: 12px;
 }
 
+.title-color {
+  color: black !important
+}
+
 /* Admin Dashboard */
 .admin-container {
   min-height: 100vh;
   padding: 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
 }
 
 .admin-header {
@@ -143,13 +217,13 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: var(--primary-gradient-90);
 }
 
 .premium-stat-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
 }
 
 .premium-stat-card:hover .stat-info h3 {
@@ -168,7 +242,7 @@
 
 .stat-icon {
   font-size: 32px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
   border-radius: 12px;
   width: 60px;
   height: 60px;
@@ -196,7 +270,7 @@
   font-weight: 700;
   color: #333;
   margin: 0;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -223,9 +297,9 @@
   margin-right: 10px;
 }
 
-.user-filter p {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
+.custom-btn {
+  background: #1F2937;
+  color: white;
   padding: 12px 20px;
   border-radius: 25px;
   cursor: pointer;
@@ -237,8 +311,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.user-filter p:hover {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+.custom-btn:hover {
+  background: var(--primary-gradient);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
@@ -260,7 +334,7 @@
 
 .data-card:hover {
   transform: translateY(-4px);
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
 }
 
 .data-card:hover p {
@@ -269,6 +343,10 @@
 
 .data-card:hover a {
   color: #e0e0ff;
+}
+
+.bg-popup {
+  background-color: #6E63C4
 }
 
 .data-card:hover b {
@@ -365,7 +443,7 @@
 }
 
 .add-link-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--primary-gradient);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -377,7 +455,7 @@
 }
 
 .add-link-btn:hover {
-  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+  background: var(--primary-gradient-hover);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);

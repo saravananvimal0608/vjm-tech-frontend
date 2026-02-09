@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { FaTasks  } from "react-icons/fa";
+import { FaTasks } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
 import { RiRocketLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { allData } from "../slices/detailsSlice";
+import { fetchDetails } from "../slices/detailsSlice";
 
 
-const AdminDashboard = () => {
+const UserDashboard = () => {
     // const role = loca
     const { datas } = useSelector(
         (state) => state.details
@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
 
     useEffect(() => {
-        dispatch(allData())
+        dispatch(fetchDetails())
     }, [dispatch])
 
 
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
                     <p>Total Tasks</p>
                     <p>Count : {datas.length}</p>
                 </div>
-                <FaTasks  className="icons" />
+                <FaTasks className="icons" />
             </div>
 
             <div className="total-task-wrapper pending-task flex-1">
@@ -65,4 +65,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default UserDashboard;
