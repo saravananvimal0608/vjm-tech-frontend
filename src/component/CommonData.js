@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteDetails, fetchDetails } from '../slices/detailsSlice'
+import { deleteDetails } from '../slices/detailsSlice'
 import { toast } from 'react-toastify'
 
 const CommonData = ({ filteredData, loading, error, showDelete = false }) => {

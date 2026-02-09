@@ -1,7 +1,6 @@
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './component/Login';
-import DashBoard from './component/UserPendingTask'
 import './App.css';
 import ProtectedRoute from './component/ProtectedRoute';
 import AdminMain from './component/AdminMain';
